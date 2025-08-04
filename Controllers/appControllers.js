@@ -42,11 +42,10 @@ export class AppControllers {
       if (!user) return res.status(401).json({ message: 'Invalid credentials' })
       
       const token = jwt.sign({ id: user.id, email: user.email, img: user.img, username: user.username, age: user.age }, process.env.TOKEN_KEY, { expiresIn: '1h' })
-      const isPsoducttion = process.env.NODE_ENV === 'production'
       res.cookie('access_token', token, {
         httpOnly: true, 
-        secure: isPsoducttion,
-        sameSite: isPsoducttion ? 'None' : 'Lax',
+        secure: true,
+        sameSite: 'None',
         maxAge: 1000 * 60 * 60
       })
       res.status(200).json({ user })
