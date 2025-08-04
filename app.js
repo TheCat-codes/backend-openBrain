@@ -16,7 +16,9 @@ dotenv.config()
 
 app.use('/api', router)
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
+console.log(PORT)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`)
 })
