@@ -43,10 +43,10 @@ export class AppControllers {
       
       const token = jwt.sign({ id: user.id, email: user.email, img: user.img, username: user.username, age: user.age }, process.env.TOKEN_KEY, { expiresIn: '1h' })
       res.cookie('access_token', token, {
-        httpOnly: true, 
-        secure: true,
-        sameSite: 'None',
-        maxAge: 1000 * 60 * 60
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 15
       })
       res.status(200).json({ user })
     } catch (e) {
