@@ -8,8 +8,8 @@ import { AppModels } from '../Models/appModels.js'
 router.get('/', (req, res) => {
   res.send('server running')
 })
-router.get('/getPosts', AppControllers.getPosts)
-router.get('/getPostsById/:id', AppControllers.getPostsByUser)
+router.get('/getPosts', verifyToken, AppControllers.getPosts)
+router.get('/getPostsById/:id', verifyToken, AppControllers.getPostsByUser)
 router.get('/getUserById', verifyToken, AppControllers.getUser)
 router.get('/search/:search', verifyToken, AppControllers.getUserByName)
 router.get('/getProfile/:id', verifyToken, AppControllers.getUserById)
