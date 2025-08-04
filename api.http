@@ -1,0 +1,14 @@
+POST http://localhost:4000/api/likePost
+Content-Type: application/json
+
+{
+  "userId":"8fde6cd4-6997-11f0-861d-a2aa6fadcacd",
+  "postId":"1cdee153-6b25-11f0-861d-a2aa6fadcacd"
+}
+
+###
+
+GET http://localhost:4000/api/getComments
+
+###
+DELETE http://localhost:4000/api/deletePost/ffef60df-6aef-11f0-861d-a2aa6fadcacd
