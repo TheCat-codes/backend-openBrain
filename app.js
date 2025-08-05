@@ -7,7 +7,7 @@ import { router } from './Routes/routes.js'
 const app = express()
 
 app.use(cors({
-  origin: "https://openbrain.onrender.com/",
+  origin: true,
   credentials: true
 }))
 app.use(express.json())
