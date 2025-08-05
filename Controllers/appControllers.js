@@ -44,7 +44,7 @@ export class AppControllers {
       const token = jwt.sign({ id: user.id, email: user.email, img: user.img, username: user.username, age: user.age }, process.env.TOKEN_KEY, { expiresIn: '1h' })
       res.cookie('access_token', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         sameSite: 'none',
         maxAge: 1000 * 60 * 15
       })
@@ -153,10 +153,10 @@ export class AppControllers {
 
 
   static logout = (req, res) => {
-    res.clearCookie('access_token',{
-      httpOnly:true,
-      secure: true,
-      ameSite:'none'
+    res.clearCookie('access_token', {
+      httpOnly: true,
+        secure: true,
+        sameSite: 'none'
     })
     res.status(200).json({ message: 'Logged out successfully' })
   }
